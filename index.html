@@ -31,15 +31,16 @@
       margin-bottom: 10px;
       font-weight: 800;
       letter-spacing: 0.5px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.15); /* 🔥 subtle pop */
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
     }
 
-    p {
+    /* 🔥 ONLY affects the "Join..." line */
+    .main-text {
       color: #173A8F;
       margin-bottom: 25px;
-      font-weight: 600;
+      font-weight: 500; /* ✅ what you wanted */
       line-height: 1.5;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 🔥 lighter shadow */
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
     input {
@@ -83,10 +84,6 @@
       color: gray;
       margin-top: 15px;
     }
-
-    .main-text {
-      font-weight:500;
-    }
   </style>
 </head>
 
@@ -98,6 +95,7 @@
 
   <h1>Get Access to Off-Market Deals</h1>
 
+  <!-- ✅ ONLY this line is affected -->
   <p class="main-text">
     Join our exclusive buyers list to receive priority notifications on new investment opportunities.
   </p>
