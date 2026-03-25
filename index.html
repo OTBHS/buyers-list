@@ -1,90 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join Our Buyers List</title>
+  <title>OTB Home Solutions - Buyers List</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 50px;
     }
     .container {
-      background: rgba(255,255,255,0.05);
-      padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    h1 {
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-    p {
-      margin-bottom: 30px;
-      font-size: 16px;
-      color: #cbd5e1;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: none;
-      font-size: 14px;
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
     }
     button {
-  display: block;
-  margin: 0 auto;
-  width: 70%;
-  max-width: 300px;
-  padding: 14px;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #22c55e;
-  color: white;
-  transition: 0.3s ease;
-}
-    button:hover {
-      background: #16a34a;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
     .note {
-      margin-top: 15px;
       font-size: 12px;
-      color: #94a3b8;
+      color: gray;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <img src="logo.jpg" alt="OTB Home Solutions Logo goes here" style="max-width: 220px; margin-bottom: 20px; border-radius: 8px;">
-    <h1>Get Access to Off‑Market Deals</h1>
-    <p>Join our exclusive buyers list to receive priority notifications on new investment opportunities.</p>
-    <!-- Replace the action URL below with your deployed Google Apps Script Web App URL -->
-    <form id="buyerForm">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="text" name="phone" placeholder="Phone Number (Optional)" />
-      <button type="submit">Join Buyers List</button>
-    </form>
-    <div class="note">We respect your privacy. No spam. Unsubscribe anytime.</div>
-  </div>
-</body>
-</html>
+
+<div class="container">
+  <h1>Get Access to Off-Market Deals</h1>
+  <p>Join our exclusive buyers list to receive priority notifications on new investment opportunities.</p>
+
+  <form id="buyerForm">
+    <input type="text" name="name" placeholder="Full Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="text" name="phone" placeholder="Phone Number (Optional)" />
+    <button type="submit">Join Buyers List</button>
+  </form>
+
+  <p id="status"></p>
+
+  <div class="note">We respect your privacy. No spam. Unsubscribe anytime.</div>
+</div>
+
 <script>
 document.getElementById("buyerForm").addEventListener("submit", function(e) {
   e.preventDefault();
+
+  console.log("FORM SUBMITTED");
 
   const formData = {
     name: this.name.value,
@@ -92,17 +66,20 @@ document.getElementById("buyerForm").addEventListener("submit", function(e) {
     phone: this.phone.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbw4IpCQFyk8w4vUQwVSccwsffFmxHpVpuUodSccA4chRmGndlhbtngGF67vbZWmwiHNww/exec", {
+  fetch("https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT/exec", {
     method: "POST",
     body: JSON.stringify(formData)
   })
   .then(res => res.text())
   .then(data => {
-    alert("✅ You're on the list!");
+    document.getElementById("status").innerText = "✅ You're on the list!";
   })
   .catch(err => {
-    alert("❌ Form not sent");
-    console.error(err);
+    document.getElementById("status").innerText = "❌ Form not sent";
+    console.error("ERROR:", err);
   });
 });
 </script>
+
+</body>
+</html>
