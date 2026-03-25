@@ -103,6 +103,7 @@
   <form id="buyerForm">
     <input type="text" name="name" placeholder="Full Name" required />
     <input type="email" name="email" placeholder="Email Address" required />
+    <input type="text" name="company" placeholder="Company Name (Optional)" />
     <input type="text" name="phone" placeholder="Phone Number (Optional)" />
     <button type="submit">Join Buyers List</button>
   </form>
@@ -122,10 +123,11 @@ document.getElementById("buyerForm").addEventListener("submit", function(e) {
   const formData = {
     name: this.name.value,
     email: this.email.value,
+    company: this.company.value
     phone: this.phone.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbwWKD0eFlAgh4PHAQh9xHhMCG3H7aq6zd_YqNtORrCT9oTJwp114sZoqvHfH9qS5RPqHA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyaDjpMD-SPFsp2YtITL3tkxrR1xvDqmTHQKT_45UW1dsZqeUKokf4laV0qk5-aPcxGiw/exec", {
     method: "POST",
     body: JSON.stringify(formData)
   })
