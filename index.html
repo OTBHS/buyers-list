@@ -2,36 +2,68 @@
 <html>
 <head>
   <title>OTB Home Solutions - Buyers List</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #111; /* dark background */
       text-align: center;
       padding: 50px;
+      color: white;
     }
+
     .container {
       background: white;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 400px;
+      color: black;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 420px;
       margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
+
+    .logo {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
     input {
       width: 90%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
     }
+
     button {
-      padding: 10px 20px;
-      background: black;
+      padding: 12px 25px;
+      background: #000;
       color: white;
       border: none;
       cursor: pointer;
+      border-radius: 6px;
+      font-size: 16px;
+      width: 95%;
     }
+
+    button:hover {
+      background: #333;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
     .note {
       font-size: 12px;
       color: gray;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -39,8 +71,15 @@
 <body>
 
 <div class="container">
+
+  <!-- ✅ LOGO -->
+  <img src="logo.jpg" class="logo" alt="OTB Home Solutions Logo">
+
   <h1>Get Access to Off-Market Deals</h1>
-  <p>Join our exclusive buyers list to receive priority notifications on new investment opportunities.</p>
+
+  <p>
+    Join our exclusive buyers list to receive priority notifications on new investment opportunities.
+  </p>
 
   <form id="buyerForm">
     <input type="text" name="name" placeholder="Full Name" required />
@@ -51,14 +90,15 @@
 
   <p id="status"></p>
 
-  <div class="note">We respect your privacy. No spam. Unsubscribe anytime.</div>
+  <div class="note">
+    We respect your privacy. No spam. Unsubscribe anytime.
+  </div>
+
 </div>
 
 <script>
 document.getElementById("buyerForm").addEventListener("submit", function(e) {
   e.preventDefault();
-
-  console.log("FORM SUBMITTED");
 
   const formData = {
     name: this.name.value,
@@ -73,6 +113,7 @@ document.getElementById("buyerForm").addEventListener("submit", function(e) {
   .then(res => res.text())
   .then(data => {
     document.getElementById("status").innerText = "✅ GREAT!! You're on the list!";
+    document.getElementById("buyerForm").reset();
   })
   .catch(err => {
     document.getElementById("status").innerText = "❌ Form not sent";
