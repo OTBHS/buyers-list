@@ -66,7 +66,7 @@ document.getElementById("buyerForm").addEventListener("submit", function(e) {
     phone: this.phone.value
   };
 
-  fetch("https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwPAfrN-3c4eu9E5aOqHmgWASyCesqyOaoo8l5DY0Xpu-hvZqWpQdiZlgyQYiZZqmkYtw/exec", {
     method: "POST",
     body: JSON.stringify(formData)
   })
