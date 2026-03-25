@@ -159,7 +159,7 @@ document.getElementById("buyerForm").addEventListener("submit", function(e) {
   })
   .then(res => res.text())
   .then(data => {
-    document.getElementById("status").innerText = "✅ GREAT!! You're on the list!";
+    document.getElementById("status").innerText = "✅ GREAT! You're on the list!";
     document.getElementById("buyerForm").reset();
   })
   .catch(err => {
